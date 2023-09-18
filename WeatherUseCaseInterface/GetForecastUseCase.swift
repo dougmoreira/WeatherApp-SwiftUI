@@ -7,6 +7,6 @@
 
 import WeatherModel
 
-protocol GetForecastUseCase {
+public protocol GetForecastUseCase {
     func getForecast(completion: @escaping (Result<CurrentWeather?, ForecastError>) -> ())
 }
