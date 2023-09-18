@@ -10,6 +10,8 @@ import WeatherModel
 import WeatherRepositoryInterface
 
 public final class ForecastRepository: ForecastRepositoryInterfaceProtocol {
+    public init() { }
+    
     public func getForecast(completionHandler: @escaping (Result<CurrentWeather?, ForecastError>) -> ()) {
         guard let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=-19.9208&longitude=-43.9378&hourly=temperature_2m&current_weather=true&forecast_days=1") else {
             completionHandler(.failure(.invalidURL))

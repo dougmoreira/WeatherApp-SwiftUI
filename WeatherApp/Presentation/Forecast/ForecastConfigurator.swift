@@ -5,6 +5,7 @@
 //  Created by Douglas Moreira on 18/09/23.
 //
 
+import WeatherRepository
 import UIKit
 
 protocol ForecastConfiguratorProtocol {
