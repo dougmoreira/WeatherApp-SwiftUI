@@ -11,7 +11,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let service = GetForecastService()
+        
+        service.getForecast { result in
+            switch result {
+            case .success(let success):
+                print(success?.temperature)
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
 
 
