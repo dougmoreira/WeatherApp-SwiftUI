@@ -8,10 +8,7 @@
 import Foundation
 import WeatherModel
 import WeatherRepositoryInterface
-
-protocol GetForecastUseCase {
-    func getForecast(completion: @escaping (Result<CurrentWeather?, ForecastError>) -> ())
-}
+import WeatherUseCaseInterface
 
 final class GetForecast: GetForecastUseCase {
     private let repository: ForecastRepositoryInterfaceProtocol
