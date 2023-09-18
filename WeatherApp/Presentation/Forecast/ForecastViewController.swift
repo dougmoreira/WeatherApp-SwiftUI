@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol ForecastDisplayLogic: AnyObject {
+    func displayForecast(with temeprature: Double)
+}
+
+class ForecastViewController: UIViewController {
     private let interactor: ForecastBusinessLogic
     
     public init(interactor: ForecastBusinessLogic) {
@@ -26,5 +30,11 @@ class ViewController: UIViewController {
     }
 
 
+}
+
+extension ForecastViewController: ForecastDisplayLogic {
+    func displayForecast(with teperature: Double) {
+        print(teperature)
+    }
 }
 

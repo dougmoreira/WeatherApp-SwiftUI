@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7497439A2AB8D275007DBFC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749743992AB8D275007DBFC7 /* AppDelegate.swift */; };
 		7497439C2AB8D275007DBFC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497439B2AB8D275007DBFC7 /* SceneDelegate.swift */; };
-		7497439E2AB8D275007DBFC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497439D2AB8D275007DBFC7 /* ViewController.swift */; };
+		7497439E2AB8D275007DBFC7 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497439D2AB8D275007DBFC7 /* ForecastViewController.swift */; };
 		749743A12AB8D275007DBFC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7497439F2AB8D275007DBFC7 /* Main.storyboard */; };
 		749743A32AB8D278007DBFC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 749743A22AB8D278007DBFC7 /* Assets.xcassets */; };
 		749743A62AB8D278007DBFC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 749743A42AB8D278007DBFC7 /* LaunchScreen.storyboard */; };
@@ -20,6 +20,8 @@
 		749743CE2AB8DBF0007DBFC7 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749743CD2AB8DBF0007DBFC7 /* ForecastModel.swift */; };
 		749743D12AB8DC8A007DBFC7 /* GetForecastUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749743D02AB8DC8A007DBFC7 /* GetForecastUseCase.swift */; };
 		749743D42AB8DF4E007DBFC7 /* ForecastInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749743D32AB8DF4E007DBFC7 /* ForecastInteractor.swift */; };
+		749743D72AB8E1A4007DBFC7 /* ForecastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749743D62AB8E1A4007DBFC7 /* ForecastPresenter.swift */; };
+		749743D92AB8E449007DBFC7 /* ForecastConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749743D82AB8E449007DBFC7 /* ForecastConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +45,7 @@
 		749743962AB8D275007DBFC7 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		749743992AB8D275007DBFC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7497439B2AB8D275007DBFC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7497439D2AB8D275007DBFC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7497439D2AB8D275007DBFC7 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		749743A02AB8D275007DBFC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		749743A22AB8D278007DBFC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		749743A52AB8D278007DBFC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +59,8 @@
 		749743CD2AB8DBF0007DBFC7 /* ForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastModel.swift; sourceTree = "<group>"; };
 		749743D02AB8DC8A007DBFC7 /* GetForecastUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetForecastUseCase.swift; sourceTree = "<group>"; };
 		749743D32AB8DF4E007DBFC7 /* ForecastInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastInteractor.swift; sourceTree = "<group>"; };
+		749743D62AB8E1A4007DBFC7 /* ForecastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPresenter.swift; sourceTree = "<group>"; };
+		749743D82AB8E449007DBFC7 /* ForecastConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,10 +169,20 @@
 		749743D22AB8DF33007DBFC7 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				7497439D2AB8D275007DBFC7 /* ViewController.swift */,
-				749743D32AB8DF4E007DBFC7 /* ForecastInteractor.swift */,
+				749743D52AB8E16A007DBFC7 /* Forecast */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		749743D52AB8E16A007DBFC7 /* Forecast */ = {
+			isa = PBXGroup;
+			children = (
+				749743D32AB8DF4E007DBFC7 /* ForecastInteractor.swift */,
+				7497439D2AB8D275007DBFC7 /* ForecastViewController.swift */,
+				749743D62AB8E1A4007DBFC7 /* ForecastPresenter.swift */,
+				749743D82AB8E449007DBFC7 /* ForecastConfigurator.swift */,
+			);
+			path = Forecast;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,8 +316,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7497439E2AB8D275007DBFC7 /* ViewController.swift in Sources */,
+				7497439E2AB8D275007DBFC7 /* ForecastViewController.swift in Sources */,
+				749743D72AB8E1A4007DBFC7 /* ForecastPresenter.swift in Sources */,
 				7497439A2AB8D275007DBFC7 /* AppDelegate.swift in Sources */,
+				749743D92AB8E449007DBFC7 /* ForecastConfigurator.swift in Sources */,
 				749743D42AB8DF4E007DBFC7 /* ForecastInteractor.swift in Sources */,
 				7497439C2AB8D275007DBFC7 /* SceneDelegate.swift in Sources */,
 				749743CE2AB8DBF0007DBFC7 /* ForecastModel.swift in Sources */,

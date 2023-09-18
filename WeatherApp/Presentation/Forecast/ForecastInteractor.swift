@@ -12,8 +12,13 @@ protocol ForecastBusinessLogic {
 }
 final class ForecastInteractor {
     private let getForecast: GetForecastUseCase
+    private let presenter: ForecastPresentationLogic
     
-    public init(getForecast: GetForecastUseCase) {
+    public init(
+        presenter: ForecastPresentationLogic,
+        getForecast: GetForecastUseCase
+    ) {
+        self.presenter = presenter
         self.getForecast = getForecast
     }
     
@@ -21,10 +26,13 @@ final class ForecastInteractor {
 
 extension ForecastInteractor: ForecastBusinessLogic {
     func getCurrentForecast() {
-        getForecast.getForecast { result in
+        getForecast.getForecast { [weak self] result in
             switch result {
             case .success(let currentWeather):
-                debugPrint(currentWeather?.temperature)
+                if let temperature = currentWeather?.temperature {
+                    self?.presenter.presentForecast(with: temperature)
+                    
+                }
             case .failure(let error):
                 debugPrint(error)
             }
