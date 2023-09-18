@@ -7,29 +7,14 @@
 
 import Foundation
 
-struct Forecast: Decodable {
-    let currentWeather: CurrentWeather
+typealias ForecastResult = Result<CurrentWeather?, ForecastError>
+
+protocol ForecastRepositoryProtocol {
+    func getForecast(completionHandler: @escaping (ForecastResult) -> () )
 }
 
-struct CurrentWeather: Decodable {
-    let temperature: Double
-}
-
-enum ForecastError: Error {
-    case invalidURL
-    case error
-    case invalidStatusCode
-    case invalidData
-    case invalidDecodedData
-    
-}
-
-protocol GetForecastServiceProtocol {
-    func getForecast(completionHandler: @escaping (Result<CurrentWeather?, ForecastError>) -> () )
-}
-
-public final class GetForecastService: GetForecastServiceProtocol {
-    func getForecast(completionHandler: @escaping (Result<CurrentWeather?, ForecastError>) -> ()) {
+public final class ForecastRepository: ForecastRepositoryProtocol {
+    func getForecast(completionHandler: @escaping (ForecastResult) -> ()) {
         guard let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=-19.9208&longitude=-43.9378&hourly=temperature_2m&current_weather=true&forecast_days=1") else {
             completionHandler(.failure(.invalidURL))
             return
@@ -65,6 +50,5 @@ public final class GetForecastService: GetForecastServiceProtocol {
         
         dataTask.resume()
     }
-    
 
 }
