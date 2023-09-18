@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import WeatherModel
 
 protocol ForecastBusinessLogic {
     func getCurrentForecast()
 }
+
 final class ForecastInteractor {
     private let getForecast: GetForecastUseCase
     private let presenter: ForecastPresentationLogic

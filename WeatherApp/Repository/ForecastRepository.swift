@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WeatherModel
 
 typealias ForecastResult = Result<CurrentWeather?, ForecastError>
 
