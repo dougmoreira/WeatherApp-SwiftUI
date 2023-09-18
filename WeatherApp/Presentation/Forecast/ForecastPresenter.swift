@@ -9,6 +9,7 @@ import Foundation
 
 protocol ForecastPresentationLogic {
     func presentForecast(with temperature: Double)
+    func presentForecastError()
 }
 
 final class ForecastPresenter: ForecastPresentationLogic {
@@ -18,6 +19,12 @@ final class ForecastPresenter: ForecastPresentationLogic {
         guard let viewController = viewController else { return }
         
         viewController.displayForecast(with: temperature)
+    }
+    
+    func presentForecastError() {
+        guard let viewController = viewController else { return }
+        
+        viewController.displayForecastError()
     }
     
 }

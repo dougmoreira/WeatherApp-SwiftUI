@@ -9,6 +9,7 @@ import UIKit
 
 protocol ForecastDisplayLogic: AnyObject {
     func displayForecast(with temperature: Double)
+    func displayForecastError()
 }
 
 class ForecastViewController: UIViewController {
@@ -18,6 +19,7 @@ class ForecastViewController: UIViewController {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
         
+        self.view.backgroundColor = .systemGray
         self.view.addSubview(stack)
         
         stack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -43,7 +45,8 @@ class ForecastViewController: UIViewController {
     
     private let temperatureLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .systemOrange
+        label.font = .systemFont(ofSize: 64)
         return label
     }()
 
@@ -52,7 +55,13 @@ class ForecastViewController: UIViewController {
 extension ForecastViewController: ForecastDisplayLogic {
     func displayForecast(with temperature: Double) {
         DispatchQueue.main.async { [weak self] in
-            self?.temperatureLabel.text = "\(temperature)"
+            self?.temperatureLabel.text = "\(temperature)C°"
+        }
+    }
+    
+    func displayForecastError() {
+        DispatchQueue.main.async { [weak self] in
+            self?.temperatureLabel.text = "No Data to display"
         }
     }
 }

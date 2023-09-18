@@ -33,8 +33,8 @@ extension ForecastInteractor: ForecastBusinessLogic {
                     self?.presenter.presentForecast(with: temperature)
                     
                 }
-            case .failure(let error):
-                debugPrint(error)
+            case .failure:
+                self?.presenter.presentForecastError()
             }
         }
     }
