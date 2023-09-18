@@ -29,7 +29,6 @@ class ForecastViewController: UIViewController {
         super.viewDidLoad()
     }
 
-
 }
 
 extension ForecastViewController: ForecastDisplayLogic {
