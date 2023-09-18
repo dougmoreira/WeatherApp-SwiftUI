@@ -6,6 +6,7 @@
 //
 
 import WeatherRepository
+import WeatherUseCase
 import UIKit
 
 protocol ForecastConfiguratorProtocol {
