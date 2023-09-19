@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class ForecastRepository: ForecastRepositoryInterfaceProtocol {
+public final class ForecastRepository: ForecastRepositoryProtocol {
     public init() { }
     
     public func getForecast(completionHandler: @escaping (Result<CurrentWeather?, ForecastError>) -> ()) {
@@ -40,7 +40,6 @@ public final class ForecastRepository: ForecastRepositoryInterfaceProtocol {
             } catch {
                 completionHandler(.failure(.invalidDecodedData))
             }
-            
             
         }
         

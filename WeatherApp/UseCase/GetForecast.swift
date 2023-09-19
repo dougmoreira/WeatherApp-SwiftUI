@@ -6,9 +6,9 @@
 //
 
 public final class GetForecast: GetForecastUseCase {
-    private let repository: ForecastRepositoryInterfaceProtocol
+    private let repository: ForecastRepositoryProtocol
     
-    public init(repository: ForecastRepositoryInterfaceProtocol) {
+    public init(repository: ForecastRepositoryProtocol) {
         self.repository = repository
     }
     

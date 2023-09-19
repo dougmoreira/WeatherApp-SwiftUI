@@ -5,6 +5,6 @@
 //  Created by Douglas Moreira on 18/09/23.
 //
 
-public protocol ForecastRepositoryInterfaceProtocol {
+public protocol ForecastRepositoryProtocol {
     func getForecast(completionHandler: @escaping (Result<CurrentWeather?, ForecastError>) -> () )
 }
