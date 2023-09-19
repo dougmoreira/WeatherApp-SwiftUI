@@ -7,32 +7,75 @@
 		<key>WeatherApp.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>WeatherModel.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>WeatherRepository.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
-		<key>WeatherRepositoryInterface.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>WeatherUseCase.xcscheme_^#shared#^_</key>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>7426A4752AB8F1FE00DDD53C</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
-		<key>WeatherUseCaseInterface.xcscheme_^#shared#^_</key>
+		<key>7426A47E2AB8F1FE00DDD53C</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7426A49B2AB8F44900DDD53C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7426A4A22AB8F44900DDD53C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7426A4BD2AB8F51700DDD53C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7426A4C42AB8F51700DDD53C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7426A4DF2AB8F5B500DDD53C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7426A4E62AB8F5B600DDD53C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>749743952AB8D275007DBFC7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>749743AB2AB8D278007DBFC7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>749743B52AB8D278007DBFC7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7497440A2AB8EFE4007DBFC7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>749744112AB8EFE4007DBFC7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

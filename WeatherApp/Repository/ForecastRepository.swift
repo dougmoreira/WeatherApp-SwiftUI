@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import WeatherModel
-import WeatherRepositoryInterface
 
 public final class ForecastRepository: ForecastRepositoryInterfaceProtocol {
     public init() { }

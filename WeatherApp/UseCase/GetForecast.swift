@@ -5,10 +5,6 @@
 //  Created by Douglas Moreira on 18/09/23.
 //
 
-import WeatherModel
-import WeatherRepositoryInterface
-import WeatherUseCaseInterface
-
 public final class GetForecast: GetForecastUseCase {
     private let repository: ForecastRepositoryInterfaceProtocol
     

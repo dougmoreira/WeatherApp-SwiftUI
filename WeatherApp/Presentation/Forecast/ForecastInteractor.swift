@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import WeatherModel
-import WeatherUseCaseInterface
 
 protocol ForecastBusinessLogic {
     func getCurrentForecast()
