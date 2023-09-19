@@ -23,6 +23,7 @@
 		74AF1D412ABA29A0008960DD /* ForecastPresentationLogicSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AF1D402ABA29A0008960DD /* ForecastPresentationLogicSpy.swift */; };
 		74AF1D432ABA2A5E008960DD /* ForecastDisplayLogicSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AF1D422ABA2A5E008960DD /* ForecastDisplayLogicSpy.swift */; };
 		74AF1D452ABA2B06008960DD /* ForecastInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AF1D442ABA2B06008960DD /* ForecastInteractorTests.swift */; };
+		74AF1D472ABA2CFD008960DD /* ForecastPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AF1D462ABA2CFD008960DD /* ForecastPresenterTests.swift */; };
 		74C12B7C2ABA0B1F0030DC71 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749744272AB8EFF6007DBFC7 /* ForecastModel.swift */; };
 		74C12B7D2ABA0B250030DC71 /* ForecastRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426A4B72AB8F46700DDD53C /* ForecastRepository.swift */; };
 		74C12B7E2ABA0B2A0030DC71 /* ForecastRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426A4952AB8F28000DDD53C /* ForecastRepositoryProtocol.swift */; };
@@ -78,6 +79,7 @@
 		74AF1D402ABA29A0008960DD /* ForecastPresentationLogicSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPresentationLogicSpy.swift; sourceTree = "<group>"; };
 		74AF1D422ABA2A5E008960DD /* ForecastDisplayLogicSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDisplayLogicSpy.swift; sourceTree = "<group>"; };
 		74AF1D442ABA2B06008960DD /* ForecastInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastInteractorTests.swift; sourceTree = "<group>"; };
+		74AF1D462ABA2CFD008960DD /* ForecastPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,8 +197,9 @@
 		74AF1D3C2ABA28B2008960DD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				74AF1D3D2ABA28C8008960DD /* Spies */,
 				74AF1D442ABA2B06008960DD /* ForecastInteractorTests.swift */,
+				74AF1D462ABA2CFD008960DD /* ForecastPresenterTests.swift */,
+				74AF1D3D2ABA28C8008960DD /* Spies */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				74AF1D352ABA1D18008960DD /* ForecastRepositoryProtocolSpy.swift in Sources */,
 				74AF1D452ABA2B06008960DD /* ForecastInteractorTests.swift in Sources */,
 				74AF1D3B2ABA1E1C008960DD /* GetForecastTests.swift in Sources */,
+				74AF1D472ABA2CFD008960DD /* ForecastPresenterTests.swift in Sources */,
 				74AF1D3F2ABA2904008960DD /* ForecastInteractorSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
