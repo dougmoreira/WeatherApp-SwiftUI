@@ -87,7 +87,7 @@
 		7497438D2AB8D275007DBFC7 = {
 			isa = PBXGroup;
 			children = (
-				74FD7FB32ABA0C2500941232 /* Resources */,
+				74FD7FB32ABA0C2500941232 /* Setup */,
 				749743982AB8D275007DBFC7 /* WeatherApp */,
 				749743AF2AB8D278007DBFC7 /* WeatherAppTests */,
 				749743972AB8D275007DBFC7 /* Products */,
@@ -168,7 +168,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		74FD7FB32ABA0C2500941232 /* Resources */ = {
+		74FD7FB32ABA0C2500941232 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
 				749743A22AB8D278007DBFC7 /* Assets.xcassets */,
@@ -176,7 +176,7 @@
 				749743992AB8D275007DBFC7 /* AppDelegate.swift */,
 				7497439B2AB8D275007DBFC7 /* SceneDelegate.swift */,
 			);
-			path = Resources;
+			path = Setup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
