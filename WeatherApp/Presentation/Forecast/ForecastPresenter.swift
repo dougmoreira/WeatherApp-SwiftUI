@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ForecastPresentationLogic {
+public protocol ForecastPresentationLogic {
     func presentForecast(with temperature: Double)
     func presentForecastError()
 }

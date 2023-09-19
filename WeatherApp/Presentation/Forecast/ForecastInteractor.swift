@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ForecastBusinessLogic {
+public protocol ForecastBusinessLogic {
     func getCurrentForecast()
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ForecastDisplayLogic: AnyObject {
+public protocol ForecastDisplayLogic: AnyObject {
     func displayForecast(with temperature: Double)
     func displayForecastError()
 }
