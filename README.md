@@ -1,7 +1,5 @@
 # iOS WeatherApp using VIPER Architecture
 
-![WeatherApp](WeatherAppScreenshot.png)
-
 This is an iOS WeatherApp that displays the current weather using the VIPER architecture. VIPER is a design pattern commonly used in iOS applications to achieve better separation of concerns and maintainability.
 
 ## Getting Started
