@@ -43,6 +43,4 @@ final class ForecastPresenterTests: XCTestCase {
         XCTAssertEqual(viewControllerSpy.displayForecastErrorCallCount, 0)
     }
     
-
-
 }

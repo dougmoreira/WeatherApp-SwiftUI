@@ -22,6 +22,12 @@ final class ForecastPresentationLogicSpy: ForecastPresentationLogic {
         presentForecastErrorCallCount += 1
     }
     
+    public private(set) var presentLoadingCallCount: Int = 0
+    
+    func presentLoading() {
+        presentLoadingCallCount += 1
+    }
+    
     public init() {}
     
 }

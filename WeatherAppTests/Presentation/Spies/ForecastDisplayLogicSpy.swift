@@ -8,17 +8,15 @@
 import WeatherApp
 
 final class ForecastDisplayLogicSpy: ForecastDisplayLogic {
-    public private(set) var displayForecastCallCount: Int = 0
-    public private(set) var displayForecastTemperaturePassed: Double?
     
-    func displayForecast(with temperature: Double) {
-        displayForecastCallCount += 1
-        displayForecastTemperaturePassed = temperature
+    public private(set) var updateCallCount: Int = 0
+    public private(set) var updateStatePassed: ViewState?
+    
+    func update(state: ViewState) {
+        updateCallCount += 1
+        updateStatePassed = state
+        
     }
     
-    public private(set) var displayForecastErrorCallCount: Int = 0
-
-    func displayForecastError() {
-        displayForecastErrorCallCount += 1
-    }
+    public init() {}
 }
