@@ -5,63 +5,51 @@
 //  Created by Douglas Moreira on 18/09/23.
 //
 
-import UIKit
+import SwiftUI
 
-public protocol ForecastDisplayLogic: AnyObject {
-    func displayForecast(with temperature: Double)
-    func displayForecastError()
+protocol ForecastDisplayLogic: UIViewController {
+    func update(state: ViewState)
 }
 
-class ForecastViewController: UIViewController {
+class ForecastState: ObservableObject {
+    @Published var state: ViewState = .content(temperature: 0)
+}
+
+class ForecastViewController: UIHostingController<ForecastView> {
+    private let state = ForecastState()
+    
     private let interactor: ForecastBusinessLogic
     
     public init(interactor: ForecastBusinessLogic) {
         self.interactor = interactor
-        super.init(nibName: nil, bundle: nil)
         
-        self.view.backgroundColor = .systemGray
-        self.view.addSubview(stack)
+        let viewStatePublisher = state.$state.eraseToAnyPublisher()
+        let forecastView = ForecastView(
+            viewModel: .init(
+                interactor: interactor, viewStatePublisher: viewStatePublisher
+            )
+        )
         
-        stack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        stack.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        super.init(rootView: forecastView)
+        
         
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @MainActor required dynamic init?(coder aDecoder: NSCoder) {
+        nil
     }
-    
-    override func viewDidLoad() {
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         interactor.getCurrentForecast()
-        super.viewDidLoad()
     }
-    
-    private lazy var stack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [temperatureLabel])
-        stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    private let temperatureLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemOrange
-        label.font = .systemFont(ofSize: 64)
-        return label
-    }()
 
 }
 
 extension ForecastViewController: ForecastDisplayLogic {
-    func displayForecast(with temperature: Double) {
+    func update(state: ViewState) {
         DispatchQueue.main.async { [weak self] in
-            self?.temperatureLabel.text = "\(temperature)C°"
-        }
-    }
-    
-    func displayForecastError() {
-        DispatchQueue.main.async { [weak self] in
-            self?.temperatureLabel.text = "No Data to display"
+            self?.state.state = state
         }
     }
 }

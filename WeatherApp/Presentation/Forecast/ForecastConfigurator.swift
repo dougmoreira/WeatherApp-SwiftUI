@@ -25,7 +25,7 @@ final class ForecastConfigurator: ForecastConfiguratorProtocol {
         
         let viewController = ForecastViewController(interactor: interactor)
         
-        presenter.viewController = viewController
+        presenter.view = viewController
         
         return viewController
     }

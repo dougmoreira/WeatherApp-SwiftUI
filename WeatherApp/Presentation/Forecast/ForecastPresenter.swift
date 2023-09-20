@@ -13,18 +13,17 @@ public protocol ForecastPresentationLogic {
 }
 
 final class ForecastPresenter: ForecastPresentationLogic {
-    weak var viewController: ForecastDisplayLogic?
+    weak var view: ForecastDisplayLogic?
+    
+    var temperature: Double = 0
     
     func presentForecast(with temperature: Double) {
-        guard let viewController = viewController else { return }
-        
-        viewController.displayForecast(with: temperature)
+        self.temperature = temperature
+        view?.update(state: .content(temperature: temperature))
     }
     
     func presentForecastError() {
-        guard let viewController = viewController else { return }
-        
-        viewController.displayForecastError()
+        view?.update(state: .error)
     }
     
 }
