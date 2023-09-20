@@ -27,6 +27,7 @@ final class ForecastInteractor {
 
 extension ForecastInteractor: ForecastBusinessLogic {
     func getCurrentForecast() {
+        presenter.presentLoading()
         getForecast.getForecast { [weak self] result in
             switch result {
             case .success(let currentWeather):

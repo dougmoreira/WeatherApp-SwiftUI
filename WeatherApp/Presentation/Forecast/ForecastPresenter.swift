@@ -10,6 +10,7 @@ import Foundation
 public protocol ForecastPresentationLogic {
     func presentForecast(with temperature: Double)
     func presentForecastError()
+    func presentLoading()
 }
 
 final class ForecastPresenter: ForecastPresentationLogic {
@@ -24,6 +25,10 @@ final class ForecastPresenter: ForecastPresentationLogic {
     
     func presentForecastError() {
         view?.update(state: .error)
+    }
+    
+    func presentLoading() {
+        view?.update(state: .loading)
     }
     
 }
