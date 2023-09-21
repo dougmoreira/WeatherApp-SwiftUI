@@ -50,17 +50,21 @@ final class ForecastPresenterTests: XCTestCase {
         XCTAssertEqual(viewSpy.updateCallCount, 1)
     }
     
-    func test_presentForecast_whenViewControllerIsNil_shouldReturn() {
+    func test_presentForecast_whenViewIsNil_shouldReturn() {
         let temperature: Double = 0
         
         sut.presentForecast(with: temperature)
         
+        XCTAssertNil(sut.view)
+        XCTAssertNil(viewSpy.updateStatePassed)
         XCTAssertEqual(viewSpy.updateCallCount, 0)
     }
     
-    func test_presentForecastError_whenViewControllerIsNil_shouldReturn() {
+    func test_presentForecastError_whenViewIsNil_shouldReturn() {
         sut.presentForecastError()
         
+        XCTAssertNil(sut.view)
+        XCTAssertNil(viewSpy.updateStatePassed)
         XCTAssertEqual(viewSpy.updateCallCount, 0)
     }
     
