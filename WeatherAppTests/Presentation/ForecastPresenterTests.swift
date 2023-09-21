@@ -13,20 +13,30 @@ final class ForecastPresenterTests: XCTestCase {
     private lazy var sut = ForecastPresenter()
     
     func test_presentForecast_shouldCallViewControllerWithCorrectParams() {
-        let temperature: Double = 0
+        let temperature: Double = 32
         
-        sut.viewController = viewControllerSpy
+        sut.view = viewControllerSpy
         sut.presentForecast(with: temperature)
         
-        XCTAssertEqual(viewControllerSpy.displayForecastTemperaturePassed, temperature)
-        XCTAssertEqual(viewControllerSpy.displayForecastCallCount, 1)
+        switch viewControllerSpy.updateStatePassed {
+        case .content(temperature: let temperaturePassed):
+            XCTAssertEqual(temperaturePassed, temperature)
+        case .error:
+            XCTFail("Got error instead content")
+        case .loading:
+            XCTFail("Got loading instead content")
+        case .none:
+            XCTFail()
+        }
+        
+        XCTAssertEqual(viewControllerSpy.updateCallCount, 1)
     }
     
     func test_presentForecastError_shouldCallViewControllerWithCorrectParams() {
-        sut.viewController = viewControllerSpy
+        sut.view = viewControllerSpy
         sut.presentForecastError()
         
-        XCTAssertEqual(viewControllerSpy.displayForecastErrorCallCount, 1)
+        XCTAssertEqual(viewControllerSpy.updateCallCount, 1)
     }
     
     func test_presentForecast_whenViewControllerIsNil_shouldReturn() {
@@ -34,13 +44,13 @@ final class ForecastPresenterTests: XCTestCase {
         
         sut.presentForecast(with: temperature)
         
-        XCTAssertEqual(viewControllerSpy.displayForecastCallCount, 0)
+        XCTAssertEqual(viewControllerSpy.updateCallCount, 0)
     }
     
     func test_presentForecastError_whenViewControllerIsNil_shouldReturn() {
         sut.presentForecastError()
         
-        XCTAssertEqual(viewControllerSpy.displayForecastErrorCallCount, 0)
+        XCTAssertEqual(viewControllerSpy.updateCallCount, 0)
     }
     
 }

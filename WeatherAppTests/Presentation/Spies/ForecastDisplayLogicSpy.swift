@@ -5,18 +5,38 @@
 //  Created by Douglas Moreira on 19/09/23.
 //
 
-import WeatherApp
+import SwiftUI
+@testable import WeatherApp
 
-final class ForecastDisplayLogicSpy: ForecastDisplayLogic {
+class ForecastDisplayLogicSpy: UIHostingController<ForecastView> {
+    private let state = ForecastState()
+    private let interactor: ForecastBusinessLogic = ForecastInteractorSpy()
     
     public private(set) var updateCallCount: Int = 0
     public private(set) var updateStatePassed: ViewState?
     
+    public init() {
+        let viewStatePublisher = state.$state.eraseToAnyPublisher()
+        let forecastView = ForecastView(
+            viewModel: .init(
+                interactor: interactor, viewStatePublisher: viewStatePublisher
+            )
+        )
+        
+        super.init(rootView: forecastView)
+        
+        
+    }
+    
+    @MainActor required dynamic init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension ForecastDisplayLogicSpy: ForecastDisplayLogic {
     func update(state: ViewState) {
         updateCallCount += 1
         updateStatePassed = state
         
     }
-    
-    public init() {}
 }
