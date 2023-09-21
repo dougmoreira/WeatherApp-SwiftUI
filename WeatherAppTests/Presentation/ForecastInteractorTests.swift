@@ -27,6 +27,7 @@ final class ForecastInteractorTests: XCTestCase {
         XCTAssertEqual(getForecastUseCaseSpy.getForecastCallCount, 1)
         XCTAssertEqual(presenterSpy.presentForecastCallCount, 1)
         XCTAssertEqual(presenterSpy.presentForecastTemperaturePassed, currentWeather.temperature)
+        XCTAssertEqual(presenterSpy.presentLoadingCallCount, 1)
     }
     
     func test_getCurrentForecast_whenGotSomeError_shouldCallPresenterWithCorrectParams() {
@@ -36,6 +37,7 @@ final class ForecastInteractorTests: XCTestCase {
         
         XCTAssertEqual(getForecastUseCaseSpy.getForecastCallCount, 1)
         XCTAssertEqual(presenterSpy.presentForecastErrorCallCount, 1)
+        XCTAssertEqual(presenterSpy.presentLoadingCallCount, 1)
     }
 
 }
