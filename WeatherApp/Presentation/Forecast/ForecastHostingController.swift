@@ -15,7 +15,7 @@ class ForecastState: ObservableObject {
     @Published var state: ViewState = .content(temperature: 0)
 }
 
-class ForecastViewController: UIHostingController<ForecastView> {
+class ForecastHostingController: UIHostingController<ForecastView> {
     private let state = ForecastState()
     
     private let interactor: ForecastBusinessLogic
@@ -46,7 +46,7 @@ class ForecastViewController: UIHostingController<ForecastView> {
 
 }
 
-extension ForecastViewController: ForecastDisplayLogic {
+extension ForecastHostingController: ForecastDisplayLogic {
     func update(state: ViewState) {
         DispatchQueue.main.async { [weak self] in
             self?.state.state = state

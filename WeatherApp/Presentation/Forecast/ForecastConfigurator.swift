@@ -23,7 +23,7 @@ final class ForecastConfigurator: ForecastConfiguratorProtocol {
             getForecast: getForecastUseCase
         )
         
-        let viewController = ForecastViewController(interactor: interactor)
+        let viewController = ForecastHostingController(interactor: interactor)
         
         presenter.view = viewController
         
