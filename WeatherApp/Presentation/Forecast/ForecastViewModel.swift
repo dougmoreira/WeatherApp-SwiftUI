@@ -7,7 +7,7 @@
 
 import Combine
 
-class ForecastViewModel: ObservableObject {
+final class ForecastViewModel: ObservableObject {
     @Published var viewState = ViewState.content(temperature: 0)
     
     private let interactor: ForecastBusinessLogic
@@ -25,7 +25,7 @@ class ForecastViewModel: ObservableObject {
             }
     }
     
-    func onAppear() {
+    func tryAgain() {
         interactor.getCurrentForecast()
     }
 }

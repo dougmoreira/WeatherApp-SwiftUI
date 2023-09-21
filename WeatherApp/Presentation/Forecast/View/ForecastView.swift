@@ -38,6 +38,12 @@ struct TemperatureView: View {
         VStack {
             Text(String(format: "%.2f", temperature))
                 .font(.largeTitle)
+            Button {
+                viewModel.tryAgain()
+            } label: {
+                Text("try again")
+            }
+
         }
     }
 }
