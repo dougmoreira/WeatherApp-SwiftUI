@@ -9,16 +9,16 @@ import XCTest
 @testable import WeatherApp
 
 final class ForecastPresenterTests: XCTestCase {
-    private let viewControllerSpy = ForecastDisplayLogicSpy()
+    private let viewSpy = ForecastDisplayLogicSpy()
     private lazy var sut = ForecastPresenter()
     
     func test_presentForecast_shouldCallViewControllerWithCorrectParams() {
         let temperature: Double = 32
         
-        sut.view = viewControllerSpy
+        sut.view = viewSpy
         sut.presentForecast(with: temperature)
         
-        switch viewControllerSpy.updateStatePassed {
+        switch viewSpy.updateStatePassed {
         case .content(temperature: let temperaturePassed):
             XCTAssertEqual(temperaturePassed, temperature)
         case .error:
@@ -29,14 +29,14 @@ final class ForecastPresenterTests: XCTestCase {
             XCTFail()
         }
         
-        XCTAssertEqual(viewControllerSpy.updateCallCount, 1)
+        XCTAssertEqual(viewSpy.updateCallCount, 1)
     }
     
     func test_presentForecastError_shouldCallViewControllerWithCorrectParams() {
-        sut.view = viewControllerSpy
+        sut.view = viewSpy
         sut.presentForecastError()
         
-        XCTAssertEqual(viewControllerSpy.updateCallCount, 1)
+        XCTAssertEqual(viewSpy.updateCallCount, 1)
     }
     
     func test_presentForecast_whenViewControllerIsNil_shouldReturn() {
@@ -44,13 +44,13 @@ final class ForecastPresenterTests: XCTestCase {
         
         sut.presentForecast(with: temperature)
         
-        XCTAssertEqual(viewControllerSpy.updateCallCount, 0)
+        XCTAssertEqual(viewSpy.updateCallCount, 0)
     }
     
     func test_presentForecastError_whenViewControllerIsNil_shouldReturn() {
         sut.presentForecastError()
         
-        XCTAssertEqual(viewControllerSpy.updateCallCount, 0)
+        XCTAssertEqual(viewSpy.updateCallCount, 0)
     }
     
 }
