@@ -32,9 +32,20 @@ final class ForecastPresenterTests: XCTestCase {
         XCTAssertEqual(viewSpy.updateCallCount, 1)
     }
     
-    func test_presentForecastError_shouldCallViewControllerWithCorrectParams() {
+    func test_presentForecastError_shouldCallViewControllerWithCorrectParams() throws {
         sut.view = viewSpy
         sut.presentForecastError()
+        
+        let statePassed = try XCTUnwrap(viewSpy.updateStatePassed)
+        
+        switch statePassed {
+        case .content:
+            XCTFail("Got a content instead expected error")
+        case .loading:
+            XCTFail("Got loading instead expected error")
+        case .error:
+            XCTAssertNotNil(statePassed)
+        }
         
         XCTAssertEqual(viewSpy.updateCallCount, 1)
     }
