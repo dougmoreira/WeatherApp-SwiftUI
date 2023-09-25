@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7412ED162AC23E7E00C0FF3D /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7412ED152AC23E7E00C0FF3D /* CarouselView.swift */; };
 		7497439A2AB8D275007DBFC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749743992AB8D275007DBFC7 /* AppDelegate.swift */; };
 		7497439C2AB8D275007DBFC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497439B2AB8D275007DBFC7 /* SceneDelegate.swift */; };
 		7497439E2AB8D275007DBFC7 /* ForecastHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497439D2AB8D275007DBFC7 /* ForecastHostingController.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7412ED152AC23E7E00C0FF3D /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		7426A4952AB8F28000DDD53C /* ForecastRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRepositoryProtocol.swift; sourceTree = "<group>"; };
 		7426A4B72AB8F46700DDD53C /* ForecastRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastRepository.swift; sourceTree = "<group>"; };
 		7426A4D92AB8F53B00DDD53C /* GetForecastUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetForecastUseCase.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				74AF1D492ABB956C008960DD /* ForecastView.swift */,
+				7412ED152AC23E7E00C0FF3D /* CarouselView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				7497439E2AB8D275007DBFC7 /* ForecastHostingController.swift in Sources */,
 				74C12B7F2ABA0B2F0030DC71 /* GetForecastUseCase.swift in Sources */,
 				749743D72AB8E1A4007DBFC7 /* ForecastPresenter.swift in Sources */,
+				7412ED162AC23E7E00C0FF3D /* CarouselView.swift in Sources */,
 				74C12B7D2ABA0B250030DC71 /* ForecastRepository.swift in Sources */,
 				7497439A2AB8D275007DBFC7 /* AppDelegate.swift in Sources */,
 				749743D92AB8E449007DBFC7 /* ForecastConfigurator.swift in Sources */,
@@ -545,6 +549,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -573,6 +578,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
