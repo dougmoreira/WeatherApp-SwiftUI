@@ -20,30 +20,27 @@ struct ForecastView: View {
         VStack {
             switch viewModel.viewState {
             case .content(let temperature):
-                TemperatureView(temperature: temperature)
+                let items = [
+                    CarouselItem(color: .red, title: "Belo Horizonte", subTitle: "Predominantemente nublado", temperature: temperature),
+                    CarouselItem(color: .blue, title: "São Paulo", subTitle: "Predominantemente Limpo", temperature: temperature),
+                ]
+                TemperatureView(items: items)
+                Spacer()
+                Button {
+                    viewModel.tryAgain()
+                } label: {
+                    Text("Reload")
+                }
             case .error:
                 ForecastErrorView()
+                Button {
+                    viewModel.tryAgain()
+                } label: {
+                    Text("try again")
+                }
             case .loading:
                 ForecastLoadingView()
             }
-        }
-    }
-}
-
-struct TemperatureViewLegacy: View {
-    @ObservedObject var viewModel: ForecastViewModel
-    var temperature: Double
-    
-    var body: some View {
-        VStack {
-            Text(String(format: "%.2f", temperature))
-                .font(.largeTitle)
-            Button {
-                viewModel.tryAgain()
-            } label: {
-                Text("try again")
-            }
-
         }
     }
 }
@@ -65,12 +62,7 @@ struct ForecastLoadingView: View {
 }
 
 struct TemperatureView: View {
-    var temperature: Double
-
-    @State private var items: [CarouselItem] = [
-        .init(color: .red, title: "Belo Horizonte", subTitle: "Predominantemente nublado"),
-        .init(color: .blue, title: "São Paulo", subTitle: "Predominantemente Limpo"),
-    ]
+    @State var items: [CarouselItem]
 
     var body: some View {
         VStack {
@@ -78,8 +70,13 @@ struct TemperatureView: View {
                 data: $items
             ) { $item in
                 RoundedRectangle(cornerRadius: 15)
-                    .fill(item.color.gradient)
-                    .frame(width: nil, height: 220)
+                .fill(item.color.gradient)
+                .frame(width: nil, height: 220)
+                .overlay {
+                    Text(String(format: "%.2f", item.temperature))
+                        .font(.largeTitle)
+                }
+                
             } titleContent: { $item in
                 VStack(spacing: 5) {
                     Text(item.title)
