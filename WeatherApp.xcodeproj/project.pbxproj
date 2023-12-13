@@ -31,6 +31,7 @@
 		74C12B7E2ABA0B2A0030DC71 /* ForecastRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426A4952AB8F28000DDD53C /* ForecastRepositoryProtocol.swift */; };
 		74C12B7F2ABA0B2F0030DC71 /* GetForecastUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426A4D92AB8F53B00DDD53C /* GetForecastUseCase.swift */; };
 		74C12B802ABA0B320030DC71 /* GetForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426A4FB2AB8F5CA00DDD53C /* GetForecast.swift */; };
+		74FFBB432B29EE9000CF5F0C /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FFBB422B29EE9000CF5F0C /* WeatherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		74AF1D462ABA2CFD008960DD /* ForecastPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPresenterTests.swift; sourceTree = "<group>"; };
 		74AF1D492ABB956C008960DD /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		74AF1D4B2ABB9611008960DD /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
+		74FFBB422B29EE9000CF5F0C /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 		749743D22AB8DF33007DBFC7 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				74FFBB412B29EE6200CF5F0C /* Weather */,
 				749743D52AB8E16A007DBFC7 /* Forecast */,
 			);
 			path = Presentation;
@@ -265,6 +268,14 @@
 			path = Setup;
 			sourceTree = "<group>";
 		};
+		74FFBB412B29EE6200CF5F0C /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				74FFBB422B29EE9000CF5F0C /* WeatherView.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -366,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74FFBB432B29EE9000CF5F0C /* WeatherView.swift in Sources */,
 				7497439E2AB8D275007DBFC7 /* ForecastHostingController.swift in Sources */,
 				74C12B7F2ABA0B2F0030DC71 /* GetForecastUseCase.swift in Sources */,
 				749743D72AB8E1A4007DBFC7 /* ForecastPresenter.swift in Sources */,
