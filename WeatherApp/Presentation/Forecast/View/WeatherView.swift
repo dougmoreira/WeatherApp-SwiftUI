@@ -59,7 +59,6 @@ struct WeatherView: View {
                     WeatherLoadingView()
                 }
             }
-            
         }
     }
 }
