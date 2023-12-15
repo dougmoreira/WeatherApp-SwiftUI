@@ -8,7 +8,7 @@
 import SwiftUI
 @testable import WeatherApp
 
-class ForecastDisplayLogicSpy: UIHostingController<ForecastView> {
+class ForecastDisplayLogicSpy: UIHostingController<WeatherView> {
     private let state = ForecastState()
     private let interactor: ForecastBusinessLogic = ForecastInteractorSpy()
     
@@ -17,7 +17,7 @@ class ForecastDisplayLogicSpy: UIHostingController<ForecastView> {
     
     public init() {
         let viewStatePublisher = state.$state.eraseToAnyPublisher()
-        let forecastView = ForecastView(
+        let forecastView = WeatherView(
             viewModel: .init(
                 interactor: interactor, viewStatePublisher: viewStatePublisher
             )
