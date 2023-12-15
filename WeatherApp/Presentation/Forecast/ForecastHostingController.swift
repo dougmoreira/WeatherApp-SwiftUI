@@ -15,7 +15,7 @@ class ForecastState: ObservableObject {
     @Published var state: ViewState = .content(temperature: 0)
 }
 
-class ForecastHostingController: UIHostingController<ForecastView> {
+class ForecastHostingController: UIHostingController<WeatherView> {
     private let state = ForecastState()
     
     private let interactor: ForecastBusinessLogic
@@ -24,7 +24,7 @@ class ForecastHostingController: UIHostingController<ForecastView> {
         self.interactor = interactor
         
         let viewStatePublisher = state.$state.eraseToAnyPublisher()
-        let forecastView = ForecastView(
+        let forecastView = WeatherView(
             viewModel: .init(
                 interactor: interactor, viewStatePublisher: viewStatePublisher
             )

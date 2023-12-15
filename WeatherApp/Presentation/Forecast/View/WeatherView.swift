@@ -13,7 +13,7 @@ enum ViewState {
     case loading
 }
 
-struct ForecastView: View {
+struct WeatherView: View {
     @ObservedObject var viewModel: ForecastViewModel
     
     var body: some View {
@@ -44,7 +44,7 @@ struct ForecastView: View {
                         
                         Spacer()
                         
-                        WheaterButton(title: "Reload") {
+                        WeatherButton(title: "Reload") {
                             viewModel.tryAgain()
                         }
                         
@@ -52,7 +52,7 @@ struct ForecastView: View {
                     }
                 case .error:
                     WeatherErrorView()
-                    WheaterButton(title: "Try again") {
+                    WeatherButton(title: "Try again") {
                         viewModel.tryAgain()
                     }
                 case .loading:
@@ -61,53 +61,5 @@ struct ForecastView: View {
             }
             
         }
-    }
-}
-
-struct WeatherErrorView: View {
-    var body: some View {
-        VStack {
-            Text("Error loading forecast data. Try again")
-        }
-    }
-}
-
-struct WeatherLoadingView: View {
-    var body: some View {
-        VStack {
-            ProgressView()
-                .progressViewStyle(.circular)
-        }
-    }
-}
-
-struct BackgroundView: View {
-    var body: some View {
-        ContainerRelativeShape()
-            .fill(Color.blue.gradient)
-            .ignoresSafeArea()
-    }
-}
-
-struct WheaterButton: View {
-    private let title: String
-    private let action: () -> Void
-    
-    init(title: String, action: @escaping () -> Void) {
-        self.title = title
-        self.action = action
-    }
-    
-    var body: some View {
-        Button {
-            action()
-        } label: {
-            Text("Reload")
-                .font(.system(size: 24))
-                .frame(width: 350, height: 50)
-                .background(Color.white.gradient)
-                .cornerRadius(12)
-        }
-
     }
 }
