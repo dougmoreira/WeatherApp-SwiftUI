@@ -2,3 +2,49 @@
 .DS_Store
 UserInterfaceState.xcuserstate
 
+# Ignore Xcode user-specific files
+.DS_Store
+*.xcuserstate
+*.user
+
+# Ignore IntelliJ IDEA files
+.idea/
+*.iml
+
+# Ignore build artifacts and compiled code
+build/
+bin/
+*.o
+*.class
+
+# Ignore node_modules and vendor directories
+node_modules/
+vendor/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# Ignore environment-specific files
+.env
+.env.local
+
+# Ignore system files
+Thumbs.db
+.DS_Store
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Visual Studio Code and IntelliJ IDEA settings
+.vscode/
+.idea/
+
+# Ignore logs and databases
+*.log
+*.sqlite
+
+
