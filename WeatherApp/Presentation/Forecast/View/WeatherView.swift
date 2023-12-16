@@ -9,7 +9,7 @@ import SwiftUI
 
 enum ViewState {
     case error
-    case content(temperature: Double)
+    case content(weatherData: WeatherData?)
     case loading
 }
 
@@ -21,7 +21,7 @@ struct WeatherView: View {
             BackgroundView()
             VStack {
                 switch viewModel.viewState {
-                case .content(let temperature):
+                case .content(let weatherData):
                     VStack() {
                         CityNameView(cityName: "Belo Horizonte, MG")
                         Image(systemName: "cloud.sun.fill")
@@ -29,7 +29,7 @@ struct WeatherView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 120, height: 120)
                             .symbolRenderingMode(.multicolor)
-                        let formattedTemperature = String(format: "%.0f", temperature)
+                        let formattedTemperature = String(format: "%.0f", weatherData?.current.temperature ?? 0)
                         Text("\(formattedTemperature)°")
                             .foregroundStyle(.white)
                             .font(.system(size: 48))

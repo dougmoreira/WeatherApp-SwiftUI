@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol ForecastPresentationLogic {
-    func presentForecast(with temperature: Double)
+    func presentForecast(with weatherData: WeatherData)
     func presentForecastError()
     func presentLoading()
 }
@@ -16,11 +16,11 @@ public protocol ForecastPresentationLogic {
 final class ForecastPresenter: ForecastPresentationLogic {
     weak var view: ForecastDisplayLogic?
     
-    var temperature: Double = 0
+    var weatherData: WeatherData?
     
-    func presentForecast(with temperature: Double) {
-        self.temperature = temperature
-        view?.update(state: .content(temperature: temperature))
+    func presentForecast(with weatherData: WeatherData) {
+        self.weatherData = weatherData
+        view?.update(state: .content(weatherData: weatherData))
     }
     
     func presentForecastError() {

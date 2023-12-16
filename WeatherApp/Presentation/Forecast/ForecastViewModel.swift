@@ -8,7 +8,7 @@
 import Combine
 
 final class ForecastViewModel: ObservableObject {
-    @Published var viewState = ViewState.content(temperature: 0)
+    @Published var viewState = ViewState.content(weatherData: nil)
     
     private let interactor: ForecastBusinessLogic
     private var viewStatePublisherCancellable: AnyCancellable?
