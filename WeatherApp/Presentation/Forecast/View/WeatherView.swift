@@ -36,10 +36,13 @@ struct WeatherView: View {
 
                         
                         HStack {
-                            DayView(dayName: "SEG", temperature: "31", imageName: "cloud.sun.fill")
-                            DayView(dayName: "TER", temperature: "30", imageName: "cloud.rain.fill")
-                            DayView(dayName: "QUA", temperature: "28", imageName: "cloud.sun.rain.fill")
-                            DayView(dayName: "QUI", temperature: "33", imageName: "sun.snow.fill")
+                            ForEach(weatherData?.daily.temperatureMax ?? [], id: \.self) { temperature in
+                                DayView(
+                                    dayName: "teste",
+                                    temperature: String(format: "%.0f", temperature),
+                                    imageName: "cloud.sun.fill"
+                                )
+                            }
                         }
                         
                         Spacer()
