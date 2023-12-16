@@ -6,5 +6,5 @@
 //
 
 public protocol GetForecastUseCase {
-    func getForecast(completion: @escaping (Result<CurrentWeather?, ForecastError>) -> ())
+    func getForecast(completion: @escaping (Result<WeatherData?, ForecastError>) -> ())
 }

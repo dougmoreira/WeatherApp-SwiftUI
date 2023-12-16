@@ -31,9 +31,11 @@ extension ForecastInteractor: ForecastBusinessLogic {
         getForecast.getForecast { [weak self] result in
             switch result {
             case .success(let currentWeather):
-                if let temperature = currentWeather?.temperature {
+                if let temperature = currentWeather?.current.temperature {
                     self?.presenter.presentForecast(with: temperature)
                     
+                } else {
+                    self?.presenter.presentForecastError()
                 }
             case .failure:
                 self?.presenter.presentForecastError()

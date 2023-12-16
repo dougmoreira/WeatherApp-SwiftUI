@@ -12,7 +12,7 @@ public final class GetForecast: GetForecastUseCase {
         self.repository = repository
     }
     
-    public func getForecast(completion: @escaping (Result<CurrentWeather?, ForecastError>) -> ()) {
+    public func getForecast(completion: @escaping (Result<WeatherData?, ForecastError>) -> ()) {
         repository.getForecast { result in
             completion(result)
         }
