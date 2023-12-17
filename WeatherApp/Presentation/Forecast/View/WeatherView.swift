@@ -24,7 +24,10 @@ struct WeatherView: View {
                     switch viewModel.viewState {
                     case .content(let weatherData):
                         VStack() {
-                            WeatherHeaderView(temperature: weatherData?.currentTemperature ?? "-")
+                            WeatherHeaderView(
+                                temperature: weatherData?.currentTemperature ?? "-",
+                                currentWeatherCode: weatherData?.weatherCode.first ?? ""
+                            )
                             VStack {
                                 ForEach(weatherData?.daysOfWeek ?? [], id: \.self) { date in
                                     if let index = weatherData?.daysOfWeek.firstIndex(of: date) {
@@ -34,7 +37,7 @@ struct WeatherView: View {
                                             date: date,
                                             temperatureMin: temperature[0],
                                             temperatureMax: temperature[1],
-                                            imageName: "cloud.sun.fill"
+                                            imageName: weatherData?.weatherCode[index] ?? ""
                                         )
                                         .frame(height: 50)
                                     }
@@ -61,14 +64,16 @@ struct WeatherView: View {
 
 struct WeatherHeaderView: View {
     private let temperature: String
+    private let currentWeatherCode: String
     
-    init(temperature: String) {
+    init(temperature: String, currentWeatherCode: String) {
         self.temperature = temperature
+        self.currentWeatherCode = currentWeatherCode
     }
     
     var body: some View {
         CityNameView(cityName: "Belo Horizonte, MG")
-        Image(systemName: "cloud.sun.fill")
+        Image(systemName: currentWeatherCode)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 120, height: 120)
@@ -83,5 +88,5 @@ struct WeatherHeaderView: View {
 }
 
 #Preview {
-    WeatherHeaderView(temperature: "30")
+    WeatherHeaderView(temperature: "30", currentWeatherCode: "cloud.bolt.fill")
 }

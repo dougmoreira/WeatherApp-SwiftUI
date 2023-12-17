@@ -30,7 +30,7 @@ struct DayView: View {
             Image(systemName: imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 48, height: 48)
+                .frame(width: 24, height: 24)
                 .symbolRenderingMode(.multicolor)
                 .padding()
             TemperatureView(temperature: temperatureMin, isTemperatureMin: true)
@@ -63,7 +63,7 @@ struct TemperatureView: View {
     }
     
     var body: some View {
-        Image(systemName: isTemperatureMin ? "arrowshape.down.fill" : "arrowshape.up.fill")
+        Image(systemName: isTemperatureMin ? "thermometer.snowflake" : "thermometer.sun")
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 18, height: 18)

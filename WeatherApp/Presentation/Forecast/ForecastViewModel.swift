@@ -11,11 +11,13 @@ public struct WeatherViewModel {
     let currentTemperature: String
     let forecastData: [[Double]]
     let daysOfWeek: [String]
+    let weatherCode: [String]
     
-    init(currentTemperature: String, forecastData: [[Double]], daysOfWeek: [String]) {
+    init(currentTemperature: String, forecastData: [[Double]], daysOfWeek: [String], weatherCode: [String]) {
         self.currentTemperature = currentTemperature
         self.forecastData = forecastData
         self.daysOfWeek = daysOfWeek
+        self.weatherCode = weatherCode
     }
 }
 
