@@ -26,15 +26,20 @@ struct WeatherView: View {
                         VStack() {
                             WeatherHeaderView(temperature: weatherData?.currentTemperature ?? "-")
                             VStack {
-                                ForEach(weatherData?.forecastData ?? [], id: \.self) { temperature in
-                                    DayView(
-                                        dayName: "SUM",
-                                        temperatureMin: temperature[0],
-                                        temperatureMax: temperature[1],
-                                        imageName: "cloud.sun.fill"
-                                    )
-                                    .frame(height: 50)
+                                ForEach(weatherData?.daysOfWeek ?? [], id: \.self) { date in
+                                    if let index = weatherData?.daysOfWeek.firstIndex(of: date) {
+                                        let temperature = weatherData?.forecastData[index] ?? []
+                                        
+                                        DayView(
+                                            date: date,
+                                            temperatureMin: temperature[0],
+                                            temperatureMax: temperature[1],
+                                            imageName: "cloud.sun.fill"
+                                        )
+                                        .frame(height: 50)
+                                    }
                                 }
+
                             }
                             .padding(.top, 24)
                         }

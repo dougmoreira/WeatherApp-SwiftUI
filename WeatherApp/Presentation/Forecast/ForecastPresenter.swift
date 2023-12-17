@@ -20,7 +20,8 @@ final class ForecastPresenter: ForecastPresentationLogic {
     
     func presentForecast(with weatherData: WeatherData) {
         guard let tempMin = weatherData.daily.temperatureMin,
-              let tempMax = weatherData.daily.temperatureMax else {
+              let tempMax = weatherData.daily.temperatureMax,
+              let time = weatherData.daily.time else {
             view?.update(state: .error)
             return
         }
@@ -30,7 +31,7 @@ final class ForecastPresenter: ForecastPresentationLogic {
             forecastData: handleForecastData(
                 temperatureMin: tempMin,
                 temperatureMax: tempMax),
-            daysOfWeek: []
+            daysOfWeek: time
         )
         
         self.weatherData = viewModel

@@ -28,11 +28,13 @@ public struct CurrentInfo: Decodable {
 }
 
 public struct DailyInfo: Decodable {
+    let time: [String]?
     let weatherCode: [Int]?
     let temperatureMax: [Double]?
     let temperatureMin: [Double]?
     
     enum CodingKeys: String, CodingKey {
+        case time = "time"
         case weatherCode = "weather_code"
         case temperatureMax = "temperature_2m_max"
         case temperatureMin = "temperature_2m_min"

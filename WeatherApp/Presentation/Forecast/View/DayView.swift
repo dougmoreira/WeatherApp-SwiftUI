@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct DayView: View {
-    private let dayName: String
+    private let date: String
     private let temperatureMin: Double
     private let temperatureMax: Double
     private let imageName: String
     
-    init(dayName: String, temperatureMin: Double, temperatureMax: Double, imageName: String) {
-        self.dayName = dayName
+    init(date: String, temperatureMin: Double, temperatureMax: Double, imageName: String) {
+        self.date = date
         self.temperatureMin = temperatureMin
         self.temperatureMax = temperatureMax
         self.imageName = imageName
@@ -23,7 +23,7 @@ struct DayView: View {
     
     var body: some View {
         HStack {
-            Text(dayName)
+            Text(dayOfWeekAbbreviation(from: date))
                 .font(.system(size: 16))
                 .foregroundColor(.white)
                 .padding()
@@ -37,6 +37,19 @@ struct DayView: View {
             TemperatureView(temperature: temperatureMax, isTemperatureMin: false)
         }
         .padding()
+    }
+    
+    private func dayOfWeekAbbreviation(from dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if let date = dateFormatter.date(from: dateString) {
+            let dayFormatter = DateFormatter()
+            dayFormatter.dateFormat = "E" //
+            return dayFormatter.string(from: date)
+        } else {
+            return "Invalid Date"
+        }
     }
 }
 
@@ -63,6 +76,6 @@ struct TemperatureView: View {
 }
 
 #Preview {
-    DayView(dayName: "SUM", temperatureMin: 22, temperatureMax: 30, imageName: "cloud.hail")
+    DayView(date: "2023-12-17", temperatureMin: 22, temperatureMax: 30, imageName: "cloud.hail")
     
 }
