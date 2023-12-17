@@ -18,7 +18,7 @@ struct CityNameView: View {
         Text(cityName)
             .font(.system(size: 24))
             .foregroundColor(.white)
-            .padding(24)
+            .padding(12)
     }
 }
 

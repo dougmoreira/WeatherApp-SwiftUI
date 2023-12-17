@@ -16,11 +16,26 @@ public protocol ForecastPresentationLogic {
 final class ForecastPresenter: ForecastPresentationLogic {
     weak var view: ForecastDisplayLogic?
     
-    var weatherData: WeatherData?
+    var weatherData: WeatherViewModel?
     
     func presentForecast(with weatherData: WeatherData) {
-        self.weatherData = weatherData
-        view?.update(state: .content(weatherData: weatherData))
+        guard let tempMin = weatherData.daily.temperatureMin,
+              let tempMax = weatherData.daily.temperatureMax else {
+            view?.update(state: .error)
+            return
+        }
+                
+        let viewModel: WeatherViewModel = .init(
+            currentTemperature: String(format: "%.0f", weatherData.current.temperature),
+            forecastData: handleForecastData(
+                temperatureMin: tempMin,
+                temperatureMax: tempMax),
+            daysOfWeek: []
+        )
+        
+        self.weatherData = viewModel
+        
+        view?.update(state: .content(viewModel: viewModel))
     }
     
     func presentForecastError() {
@@ -31,4 +46,20 @@ final class ForecastPresenter: ForecastPresentationLogic {
         view?.update(state: .loading)
     }
     
+}
+
+extension ForecastPresenter {
+    private func handleForecastData(temperatureMin: [Double], temperatureMax: [Double]) -> [[Double]] {
+        guard temperatureMin.count == temperatureMax.count else {
+            return []
+        }
+
+        var combinedArray: [[Double]] = []
+
+        for (min, max) in zip(temperatureMin, temperatureMax) {
+            combinedArray.append([min, max])
+        }
+
+        return combinedArray
+    }
 }

@@ -7,8 +7,20 @@
 
 import Combine
 
+public struct WeatherViewModel {
+    let currentTemperature: String
+    let forecastData: [[Double]]
+    let daysOfWeek: [String]
+    
+    init(currentTemperature: String, forecastData: [[Double]], daysOfWeek: [String]) {
+        self.currentTemperature = currentTemperature
+        self.forecastData = forecastData
+        self.daysOfWeek = daysOfWeek
+    }
+}
+
 final class ForecastViewModel: ObservableObject {
-    @Published var viewState = ViewState.content(weatherData: nil)
+    @Published var viewState = ViewState.content(viewModel: nil)
     
     private let interactor: ForecastBusinessLogic
     private var viewStatePublisherCancellable: AnyCancellable?

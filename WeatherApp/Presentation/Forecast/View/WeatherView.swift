@@ -9,7 +9,7 @@ import SwiftUI
 
 enum ViewState {
     case error
-    case content(weatherData: WeatherData?)
+    case content(viewModel: WeatherViewModel?)
     case loading
 }
 
@@ -19,49 +19,64 @@ struct WeatherView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            VStack {
-                switch viewModel.viewState {
-                case .content(let weatherData):
-                    VStack() {
-                        CityNameView(cityName: "Belo Horizonte, MG")
-                        Image(systemName: "cloud.sun.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 120, height: 120)
-                            .symbolRenderingMode(.multicolor)
-                        let formattedTemperature = String(format: "%.0f", weatherData?.current.temperature ?? 0)
-                        Text("\(formattedTemperature)°")
-                            .foregroundStyle(.white)
-                            .font(.system(size: 48))
-
-                        
-                        HStack {
-                            ForEach(weatherData?.daily.temperatureMax ?? [], id: \.self) { temperature in
-                                DayView(
-                                    dayName: "teste",
-                                    temperature: String(format: "%.0f", temperature),
-                                    imageName: "cloud.sun.fill"
-                                )
+            ScrollView {
+                VStack {
+                    switch viewModel.viewState {
+                    case .content(let weatherData):
+                        VStack() {
+                            WeatherHeaderView(temperature: weatherData?.currentTemperature ?? "-")
+                            VStack {
+                                ForEach(weatherData?.forecastData ?? [], id: \.self) { temperature in
+                                    DayView(
+                                        dayName: "SUM",
+                                        temperatureMin: temperature[0],
+                                        temperatureMax: temperature[1],
+                                        imageName: "cloud.sun.fill"
+                                    )
+                                    .frame(height: 50)
+                                }
                             }
+                            .padding(.top, 24)
                         }
-                        
-                        Spacer()
-                        
-                        WeatherButton(title: "Reload") {
+                    case .error:
+                        WeatherErrorView()
+                        WeatherButton(title: "Try again") {
                             viewModel.tryAgain()
                         }
-                        
-                        Spacer()
+                    case .loading:
+                        WeatherLoadingView()
                     }
-                case .error:
-                    WeatherErrorView()
-                    WeatherButton(title: "Try again") {
-                        viewModel.tryAgain()
-                    }
-                case .loading:
-                    WeatherLoadingView()
                 }
+            }.refreshable {
+                viewModel.tryAgain()
             }
         }
     }
+}
+
+struct WeatherHeaderView: View {
+    private let temperature: String
+    
+    init(temperature: String) {
+        self.temperature = temperature
+    }
+    
+    var body: some View {
+        CityNameView(cityName: "Belo Horizonte, MG")
+        Image(systemName: "cloud.sun.fill")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 120, height: 120)
+            .symbolRenderingMode(.multicolor)
+            .padding(-8)
+        Text("\(temperature)°")
+            .foregroundStyle(.white)
+            .font(.system(size: 48))
+            .padding(-8)
+        
+    }
+}
+
+#Preview {
+    WeatherHeaderView(temperature: "30")
 }
