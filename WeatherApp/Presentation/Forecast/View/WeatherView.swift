@@ -15,7 +15,6 @@ enum ViewState {
 
 struct WeatherView: View {
     @ObservedObject var viewModel: ForecastViewModel
-    private let columns: [GridItem] = [GridItem(.flexible())]
     
     var body: some View {
         ZStack {
@@ -24,28 +23,7 @@ struct WeatherView: View {
                 VStack {
                     switch viewModel.viewState {
                     case .content(let weatherData):
-                        VStack() {
-                            WeatherHeaderView(
-                                temperature: weatherData?.currentTemperature ?? "-",
-                                currentWeatherCode: weatherData?.weatherCode.first ?? ""
-                            )
-                            LazyVGrid(columns: columns, spacing: 16, content: {
-                                ForEach(weatherData?.daysOfWeek ?? [], id: \.self) { date in
-                                    if let index = weatherData?.daysOfWeek.firstIndex(of: date) {
-                                        let temperature = weatherData?.forecastData[index] ?? []
-                                        
-                                        DayView(
-                                            date: date,
-                                            temperatureMin: temperature[0],
-                                            temperatureMax: temperature[1],
-                                            imageName: weatherData?.weatherCode[index] ?? ""
-                                        )
-                                        .frame(height: 50)
-                                    }
-                                }
-                            })
-                            .padding(.top, 24)
-                        }
+                        WeatherContentView(content: weatherData)
                     case .error:
                         WeatherErrorView()
                         WeatherButton(title: "Try again") {
@@ -58,6 +36,40 @@ struct WeatherView: View {
             }.refreshable {
                 viewModel.tryAgain()
             }
+        }
+    }
+}
+
+struct WeatherContentView: View {
+    private let columns: [GridItem] = [GridItem(.flexible())]
+    private let content: WeatherViewInfo?
+    
+    init(content: WeatherViewInfo?) {
+        self.content = content
+    }
+    
+    var body: some View {
+        VStack() {
+            WeatherHeaderView(
+                temperature: content?.currentTemperature ?? "-",
+                currentWeatherCode: content?.weatherCode.first ?? ""
+            )
+            LazyVGrid(columns: columns, spacing: 16, content: {
+                ForEach(content?.daysOfWeek ?? [], id: \.self) { date in
+                    if let index = content?.daysOfWeek.firstIndex(of: date) {
+                        let temperature = content?.forecastData[index] ?? []
+                        
+                        DayView(
+                            date: date,
+                            temperatureMin: temperature[0],
+                            temperatureMax: temperature[1],
+                            imageName: content?.weatherCode[index] ?? ""
+                        )
+                        .frame(height: 50)
+                    }
+                }
+            })
+            .padding(.top, 24)
         }
     }
 }
