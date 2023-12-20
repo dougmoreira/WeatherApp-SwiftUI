@@ -19,8 +19,8 @@ final class ForecastPresenterTests: XCTestCase {
         sut.presentForecast(with: expectedCurrentWeather)
                 
         switch viewSpy.updateStatePassed {
-        case .content(viewModel: let viewModel):
-            let viewModelPassed: WeatherViewModel = try XCTUnwrap(viewModel)
+        case .content(content: let viewModel):
+            let viewModelPassed: WeatherViewInfo = try XCTUnwrap(viewModel)
             XCTAssertEqual(viewModelPassed.currentTemperature, String(format: "%.0f", expectedCurrentWeather.current.temperature))
         case .error:
             XCTFail("Got error instead content")

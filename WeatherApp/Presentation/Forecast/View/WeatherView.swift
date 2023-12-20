@@ -9,7 +9,7 @@ import SwiftUI
 
 enum ViewState {
     case error
-    case content(viewModel: WeatherViewModel?)
+    case content(content: WeatherViewInfo?)
     case loading
 }
 

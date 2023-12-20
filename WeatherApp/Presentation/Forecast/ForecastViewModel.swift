@@ -7,7 +7,7 @@
 
 import Combine
 
-public struct WeatherViewModel {
+public struct WeatherViewInfo {
     let currentTemperature: String
     let forecastData: [[Double]]
     let daysOfWeek: [String]
@@ -21,7 +21,7 @@ public struct WeatherViewModel {
     }
 }
 
-public struct WeatherDetailsViewProtocol {
+public struct WeatherDetailsInfo {
     let temeperatureMin: String
     let temperatureMax: String
     let weatherCode: String
@@ -29,8 +29,8 @@ public struct WeatherDetailsViewProtocol {
 }
 
 final class ForecastViewModel: ObservableObject {
-    @Published var viewState = ViewState.content(viewModel: nil)
-    @Published var selectedDay: WeatherDetailsViewProtocol?
+    @Published var viewState = ViewState.content(content: nil)
+    @Published var selectedDay: WeatherDetailsInfo?
     
     private let interactor: ForecastBusinessLogic
     private var viewStatePublisherCancellable: AnyCancellable?

@@ -16,7 +16,7 @@ public protocol ForecastPresentationLogic {
 final class ForecastPresenter: ForecastPresentationLogic {
     weak var view: ForecastDisplayLogic?
     
-    var weatherData: WeatherViewModel?
+    var weatherData: WeatherViewInfo?
     
     func presentForecast(with weatherData: WeatherDataResponse) {
         guard let tempMin = weatherData.daily.temperatureMin,
@@ -26,7 +26,7 @@ final class ForecastPresenter: ForecastPresentationLogic {
             return
         }
                 
-        let viewModel: WeatherViewModel = .init(
+        let weatherViewInfo: WeatherViewInfo = .init(
             currentTemperature: String(format: "%.0f", weatherData.current.temperature),
             forecastData: handleForecastData(
                 temperatureMin: tempMin,
@@ -35,9 +35,9 @@ final class ForecastPresenter: ForecastPresentationLogic {
             weatherCode: getWeatherSymbols(forWeatherCodes: weatherData.daily.weatherCode ?? [])
         )
         
-        self.weatherData = viewModel
+        self.weatherData = weatherViewInfo
         
-        view?.update(state: .content(viewModel: viewModel))
+        view?.update(state: .content(content: weatherViewInfo))
     }
     
     func presentForecastError() {

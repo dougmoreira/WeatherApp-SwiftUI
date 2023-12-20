@@ -12,7 +12,7 @@ protocol ForecastDisplayLogic: UIViewController {
 }
 
 class ForecastState: ObservableObject {
-    @Published var state: ViewState = .content(viewModel: nil)
+    @Published var state: ViewState = .content(content: nil)
 }
 
 class ForecastHostingController: UIHostingController<WeatherView> {
