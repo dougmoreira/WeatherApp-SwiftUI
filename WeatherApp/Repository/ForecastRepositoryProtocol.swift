@@ -6,5 +6,5 @@
 //
 
 public protocol ForecastRepositoryProtocol {
-    func getForecast(completionHandler: @escaping (Result<WeatherData?, ForecastError>) -> () )
+    func getForecast(completionHandler: @escaping (Result<WeatherDataResponse?, ForecastError>) -> () )
 }

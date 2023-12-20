@@ -15,6 +15,7 @@ enum ViewState {
 
 struct WeatherView: View {
     @ObservedObject var viewModel: ForecastViewModel
+    private let columns: [GridItem] = [GridItem(.flexible())]
     
     var body: some View {
         ZStack {
@@ -28,7 +29,7 @@ struct WeatherView: View {
                                 temperature: weatherData?.currentTemperature ?? "-",
                                 currentWeatherCode: weatherData?.weatherCode.first ?? ""
                             )
-                            VStack {
+                            LazyVGrid(columns: columns, spacing: 16, content: {
                                 ForEach(weatherData?.daysOfWeek ?? [], id: \.self) { date in
                                     if let index = weatherData?.daysOfWeek.firstIndex(of: date) {
                                         let temperature = weatherData?.forecastData[index] ?? []
@@ -42,8 +43,7 @@ struct WeatherView: View {
                                         .frame(height: 50)
                                     }
                                 }
-
-                            }
+                            })
                             .padding(.top, 24)
                         }
                     case .error:

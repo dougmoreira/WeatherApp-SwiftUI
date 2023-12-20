@@ -9,11 +9,11 @@ import WeatherApp
 
 final class ForecastPresentationLogicSpy: ForecastPresentationLogic {
     public private(set) var presentForecastCallCount: Int = 0
-    public private(set) var presentForecastTemperaturePassed: Double?
+    public private(set) var presentForecastWeatherDataPassed: WeatherDataResponse?
 
-    func presentForecast(with temperature: Double) {
+    func presentForecast(with weatherData: WeatherDataResponse) {
         presentForecastCallCount += 1
-        presentForecastTemperaturePassed = temperature
+        presentForecastWeatherDataPassed = weatherData
     }
     
     public private(set) var presentForecastErrorCallCount: Int = 0

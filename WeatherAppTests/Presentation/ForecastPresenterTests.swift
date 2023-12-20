@@ -12,15 +12,16 @@ final class ForecastPresenterTests: XCTestCase {
     private let viewSpy = ForecastDisplayLogicSpy()
     private lazy var sut = ForecastPresenter()
     
-    func test_presentForecast_shouldCallViewControllerWithCorrectParams() {
-        let temperature: Double = 32
+    func test_presentForecast_shouldCallViewControllerWithCorrectParams() throws {
+        let expectedCurrentWeather: WeatherDataResponse = .mock()
         
         sut.view = viewSpy
-        sut.presentForecast(with: temperature)
-        
+        sut.presentForecast(with: expectedCurrentWeather)
+                
         switch viewSpy.updateStatePassed {
-        case .content(temperature: let temperaturePassed):
-            XCTAssertEqual(temperaturePassed, temperature)
+        case .content(viewModel: let viewModel):
+            let viewModelPassed: WeatherViewModel = try XCTUnwrap(viewModel)
+            XCTAssertEqual(viewModelPassed.currentTemperature, String(format: "%.0f", expectedCurrentWeather.current.temperature))
         case .error:
             XCTFail("Got error instead content")
         case .loading:
@@ -51,9 +52,15 @@ final class ForecastPresenterTests: XCTestCase {
     }
     
     func test_presentForecast_whenViewIsNil_shouldReturn() {
-        let temperature: Double = 0
+        let currentInfo: CurrentInfo = .init(temperature: 30, isDay: 1, weatherCode: 0)
+        let daily: DailyInfo = .init(time: [], weatherCode: [], temperatureMax: [], temperatureMin: [])
         
-        sut.presentForecast(with: temperature)
+        let expectedCurrentWeather: WeatherDataResponse = .init(
+            current: currentInfo,
+            daily: daily
+        )
+        
+        sut.presentForecast(with: expectedCurrentWeather)
         
         XCTAssertNil(sut.view)
         XCTAssertNil(viewSpy.updateStatePassed)

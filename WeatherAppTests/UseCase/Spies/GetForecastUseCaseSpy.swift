@@ -11,9 +11,9 @@ import WeatherApp
 final class GetForecastUseCaseSpy: GetForecastUseCase {
     
     public private(set) var getForecastCallCount: Int = 0
-    public var getForecastCompletionToBeReturned: Result<CurrentWeather?, ForecastError>?
+    public var getForecastCompletionToBeReturned: Result<WeatherDataResponse?, ForecastError>?
     
-    func getForecast(completion completionHandler: @escaping (Result<CurrentWeather?, ForecastError>) -> ()) {
+    func getForecast(completion completionHandler: @escaping (Result<WeatherDataResponse?, ForecastError>) -> ()) {
         getForecastCallCount += 1
         
         if let getForecastCompletionToBeReturned {

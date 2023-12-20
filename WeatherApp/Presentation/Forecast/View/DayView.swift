@@ -31,12 +31,12 @@ struct DayView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 24, height: 24)
-                .symbolRenderingMode(.multicolor)
                 .padding()
             TemperatureView(temperature: temperatureMin, isTemperatureMin: true)
             TemperatureView(temperature: temperatureMax, isTemperatureMin: false)
         }
         .padding()
+        .symbolRenderingMode(.multicolor)
     }
     
     private func dayOfWeekAbbreviation(from dateString: String) -> String {
@@ -63,11 +63,10 @@ struct TemperatureView: View {
     }
     
     var body: some View {
-        Image(systemName: isTemperatureMin ? "thermometer.snowflake" : "thermometer.sun")
+        Image(systemName: isTemperatureMin ? "thermometer.low" : "thermometer.high")
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 18, height: 18)
-            .symbolRenderingMode(.monochrome)
         Text("\(String(format: "%.0f", temperature))°")
             .font(.system(size: 16))
             .foregroundColor(.white)

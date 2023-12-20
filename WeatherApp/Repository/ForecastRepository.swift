@@ -10,7 +10,7 @@ import Foundation
 public final class ForecastRepository: ForecastRepositoryProtocol {
     public init() { }
     
-    public func getForecast(completionHandler: @escaping (Result<WeatherData?, ForecastError>) -> ()) {
+    public func getForecast(completionHandler: @escaping (Result<WeatherDataResponse?, ForecastError>) -> ()) {
         guard let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=-19.9208&longitude=-43.9378&current=temperature_2m,is_day,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto") else {
             completionHandler(.failure(.invalidURL))
             return
@@ -35,7 +35,7 @@ public final class ForecastRepository: ForecastRepositoryProtocol {
             let decode = JSONDecoder()
             
             do {
-                let decodedData = try decode.decode(WeatherData.self, from: data)
+                let decodedData = try decode.decode(WeatherDataResponse.self, from: data)
                 completionHandler(.success(decodedData))
             } catch {
                 completionHandler(.failure(.invalidDecodedData))

@@ -21,8 +21,16 @@ public struct WeatherViewModel {
     }
 }
 
+public struct WeatherDetailsViewProtocol {
+    let temeperatureMin: String
+    let temperatureMax: String
+    let weatherCode: String
+    
+}
+
 final class ForecastViewModel: ObservableObject {
     @Published var viewState = ViewState.content(viewModel: nil)
+    @Published var selectedDay: WeatherDetailsViewProtocol?
     
     private let interactor: ForecastBusinessLogic
     private var viewStatePublisherCancellable: AnyCancellable?

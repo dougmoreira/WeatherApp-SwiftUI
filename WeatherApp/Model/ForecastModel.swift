@@ -5,7 +5,7 @@
 //  Created by Douglas Moreira on 18/09/23.
 //
 
-public struct WeatherData: Decodable {
+public struct WeatherDataResponse: Decodable {
     let current: CurrentInfo
     let daily: DailyInfo
     

@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol ForecastPresentationLogic {
-    func presentForecast(with weatherData: WeatherData)
+    func presentForecast(with weatherData: WeatherDataResponse)
     func presentForecastError()
     func presentLoading()
 }
@@ -18,7 +18,7 @@ final class ForecastPresenter: ForecastPresentationLogic {
     
     var weatherData: WeatherViewModel?
     
-    func presentForecast(with weatherData: WeatherData) {
+    func presentForecast(with weatherData: WeatherDataResponse) {
         guard let tempMin = weatherData.daily.temperatureMin,
               let tempMax = weatherData.daily.temperatureMax,
               let time = weatherData.daily.time else {

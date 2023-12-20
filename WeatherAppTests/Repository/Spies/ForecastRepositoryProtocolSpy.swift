@@ -11,9 +11,9 @@ import WeatherApp
 public final class ForecastRepositoryProtocolSpy: ForecastRepositoryProtocol {
     
     public var getForecastCallCount: Int = 0
-    public var getForecastCompletionToBeReturned: Result<CurrentWeather?, ForecastError>?
+    public var getForecastCompletionToBeReturned: Result<WeatherDataResponse?, ForecastError>?
     
-    public func getForecast(completionHandler: @escaping (Result<CurrentWeather?, ForecastError>) -> ()) {
+    public func getForecast(completionHandler: @escaping (Result<WeatherDataResponse?, ForecastError>) -> ()) {
         getForecastCallCount += 1
         
         if let getForecastCompletionToBeReturned {

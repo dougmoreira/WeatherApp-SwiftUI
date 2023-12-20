@@ -31,14 +31,19 @@ final class GetForecastTests: XCTestCase {
     }
     
     func test_getForecast_whenRequestSucced_shouldCompletionWithCorrectValue() {
-        let expectedCurrentWeather: CurrentWeather = .init(temperature: 0)
+        let expectedCurrentWeather: WeatherDataResponse = .mock()
         
         forecastRepositorySpy.getForecastCompletionToBeReturned = .success(expectedCurrentWeather)
         
         sut.getForecast { result in
             switch result {
             case .success(let success):
-                XCTAssertEqual(success?.temperature, expectedCurrentWeather.temperature)
+                XCTAssertEqual(String(describing: success?.daily.temperatureMax), String(describing: expectedCurrentWeather.daily.temperatureMax))
+                XCTAssertEqual(String(describing: success?.daily.temperatureMin), String(describing: expectedCurrentWeather.daily.temperatureMin))
+                XCTAssertEqual(String(describing: success?.daily.time), String(describing: expectedCurrentWeather.daily.time))
+                XCTAssertEqual(String(describing: success?.daily.weatherCode), String(describing: expectedCurrentWeather.daily.weatherCode))
+                XCTAssertEqual(String(describing: success?.current.isDay), String(describing: expectedCurrentWeather.current.isDay))
+                XCTAssertEqual(String(describing: success?.current.weatherCode), String(describing: expectedCurrentWeather.current.weatherCode))
             case .failure(let failure):
                 XCTAssertNil(failure)
             }
