@@ -30,7 +30,6 @@ public struct WeatherDetailsInfo {
 
 final class ForecastViewModel: ObservableObject {
     @Published var viewState = ViewState.content(content: nil)
-    @Published var selectedDay: WeatherDetailsInfo?
     
     private let interactor: ForecastBusinessLogic
     private var viewStatePublisherCancellable: AnyCancellable?
